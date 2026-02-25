@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weapon Specialist</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Courier New', monospace;
+}
+
+body{
+    background:#2f3e2f;
+    color:#f5f1e6;
+}
+
+/* HEADER */
+header{
+    background:#1c2b1c;
+    padding:25px 60px;
+    text-align:center;
+    border-bottom:3px solid #8b6f3d;
+}
+
+header h1{
+    font-size:32px;
+    letter-spacing:3px;
+}
+
+header p{
+    margin-top:10px;
+    color:#c2b280;
+}
+
+/* SECTION */
+.section{
+    padding:60px;
+}
+
+.section h2{
+    margin-bottom:40px;
+    border-left:6px solid #8b6f3d;
+    padding-left:15px;
+    font-size:26px;
+    color:#d4af37;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+/* CARD */
+.card{
+    background:#3e4f3e;
+    padding:30px;
+    text-align:center;
+    border:2px solid #556b2f;
+    transition:0.4s ease;
+    cursor:pointer;
+}
+
+.card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    margin-bottom:20px;
+    filter:grayscale(40%);
+    transition:0.4s;
+}
+
+.card h3{
+    margin-bottom:10px;
+    letter-spacing:1px;
+}
+
+.card p{
+    font-size:14px;
+    color:#ddd;
+}
+
+/* HOVER EFFECT */
+.card:hover{
+    transform:scale(1.1);
+    border-color:#d4af37;
+    box-shadow:0 0 25px rgba(212,175,55,0.6);
+}
+
+.card:hover img{
+    filter:grayscale(0%);
+}
+
+/* FOOTER */
+footer{
+    background:#1c2b1c;
+    padding:30px;
+    text-align:center;
+    border-top:3px solid #8b6f3d;
+    margin-top:50px;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+    .section{
+        padding:40px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>WEAPON SPECIALIST</h1>
+    <p>Vintage U.S. Army Tactical Arsenal</p>
+</header>
+
+<!-- ASSAULT RIFLES -->
+<section class="section">
+    <h2>Assault Rifles</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1597764690520-15bea3f72b35?q=80&w=800" alt="">
+            <h3>M4 Carbine</h3>
+            <p>Lightweight modular assault rifle used extensively by U.S. forces.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1610484826929-81b0a5cfdc8e?q=80&w=800" alt="">
+            <h3>AK-47</h3>
+            <p>Gas-operated rifle known for reliability and durability.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600793573938-18b7d5f7f3a0?q=80&w=800" alt="">
+            <h3>FN SCAR</h3>
+            <p>Advanced modular assault platform with enhanced performance.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PISTOLS -->
+<section class="section">
+    <h2>Pistols</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1603398938378-cdceae4b1b47?q=80&w=800" alt="">
+            <h3>Glock 19</h3>
+            <p>Compact, striker-fired pistol used in military and law enforcement.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=800" alt="">
+            <h3>Beretta M9</h3>
+            <p>Standard-issue U.S. military sidearm for decades.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1585129766742-7a6d2a9e46de?q=80&w=800" alt="">
+            <h3>Sig Sauer P320</h3>
+            <p>Modern modular handgun platform adopted by U.S. Army.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HANDGUNS -->
+<section class="section">
+    <h2>Handguns</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1605460375648-278bcbd579a6?q=80&w=800" alt="">
+            <h3>Colt M1911</h3>
+            <p>Classic American handgun with historic military legacy.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1594113569142-0a52d69f964b?q=80&w=800" alt="">
+            <h3>Smith & Wesson M&P</h3>
+            <p>Modern polymer-framed handgun built for tactical precision.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1604187351574-c75ca79f5807?q=80&w=800" alt="">
+            <h3>Ruger SR9</h3>
+            <p>Lightweight semi-automatic handgun for defensive use.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Weapon Specialist | Vintage Tactical Division
+</footer>
+
+</body>
+</html>

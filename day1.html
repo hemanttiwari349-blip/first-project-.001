@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DressWise | Scandinavian Edition</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bgsoft: "#f7f7f5",
+        stone: "#e8e6e1",
+        greysoft: "#b8b6b0",
+        sage: "#7a8f7b",
+        charcoal: "#2f2f2f"
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  .card {
+    background: white;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+</style>
+</head>
+
+<body class="bg-bgsoft text-charcoal font-sans">
+
+<!-- NAV -->
+<nav class="flex justify-between items-center px-12 py-8">
+  <h1 class="text-3xl font-semibold tracking-wide">
+    DressWise
+  </h1>
+
+  <button onclick="toggleMode()"
+    class="px-6 py-2 rounded-full bg-sage text-white hover:opacity-90 transition duration-300 shadow-md">
+    Toggle Minimal Dark
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="text-center py-24 px-6">
+  <h2 class="text-5xl font-semibold mb-6 leading-tight">
+    Calm Styling.<br>
+    Intelligent Choices.
+  </h2>
+
+  <p class="max-w-2xl mx-auto text-lg text-greysoft">
+    Build your wardrobe and let intelligent color harmony
+    create balanced outfit combinations.
+  </p>
+</section>
+
+<!-- MAIN CARD -->
+<section class="flex justify-center px-6 pb-24">
+  <div class="card p-12 w-full max-w-2xl">
+
+    <h3 class="text-2xl font-semibold mb-8 text-center">
+      Your Wardrobe
+    </h3>
+
+    <div class="space-y-6">
+
+      <input id="topInput" type="text" placeholder="Top (e.g., White Shirt)"
+        class="w-full p-4 rounded-2xl bg-stone focus:outline-none focus:ring-2 focus:ring-sage">
+
+      <input id="bottomInput" type="text" placeholder="Bottom (e.g., Black Trousers)"
+        class="w-full p-4 rounded-2xl bg-stone focus:outline-none focus:ring-2 focus:ring-sage">
+
+      <div class="flex gap-4 flex-col md:flex-row">
+
+        <button onclick="addClothes()"
+          class="flex-1 py-4 rounded-full bg-charcoal text-white hover:opacity-90 transition shadow-sm">
+          Add Clothes
+        </button>
+
+        <button onclick="generateOutfit()"
+          class="flex-1 py-4 rounded-full bg-sage text-white hover:opacity-90 transition shadow-sm">
+          Generate Outfit
+        </button>
+
+      </div>
+
+      <p id="outfitResult" class="text-center text-lg mt-6 text-sage font-medium"></p>
+
+    </div>
+  </div>
+</section>
+
+<footer class="text-center pb-10 text-sm text-greysoft">
+  © 2026 DressWise • Scandinavian Minimal
+</footer>
+
+<script>
+let tops = [];
+let bottoms = [];
+
+// Dark Mode Toggle (Soft Nordic Dark)
+function toggleMode() {
+  document.body.classList.toggle("bg-bgsoft");
+  document.body.classList.toggle("bg-[#1e1e1e]");
+  document.body.classList.toggle("text-charcoal");
+  document.body.classList.toggle("text-[#f2f2f2]");
+}
+
+// Add Clothes
+function addClothes() {
+  const top = document.getElementById("topInput").value.toLowerCase();
+  const bottom = document.getElementById("bottomInput").value.toLowerCase();
+
+  if (top) tops.push(top);
+  if (bottom) bottoms.push(bottom);
+
+  document.getElementById("topInput").value = "";
+  document.getElementById("bottomInput").value = "";
+
+  alert("Added to wardrobe");
+}
+
+// Color Logic
+function colorCategory(item) {
+  if (!item) return "neutral";
+
+  if (item.includes("black") || item.includes("white") || item.includes("grey"))
+    return "neutral";
+
+  if (item.includes("blue") || item.includes("navy"))
+    return "cool";
+
+  if (item.includes("green") || item.includes("olive"))
+    return "earth";
+
+  if (item.includes("brown") || item.includes("beige") || item.includes("cream"))
+    return "neutral";
+
+  if (item.includes("red") || item.includes("orange") || item.includes("yellow"))
+    return "warm";
+
+  return "neutral";
+}
+
+// Smart Matching
+function generateOutfit() {
+  if (tops.length === 0 || bottoms.length === 0) {
+    document.getElementById("outfitResult").innerText =
+      "Please add at least one top and bottom.";
+    return;
+  }
+
+  for (let i = 0; i < tops.length; i++) {
+    for (let j = 0; j < bottoms.length; j++) {
+
+      const topColor = colorCategory(tops[i]);
+      const bottomColor = colorCategory(bottoms[j]);
+
+      if (
+        topColor === bottomColor ||
+        topColor === "neutral" ||
+        bottomColor === "neutral"
+      ) {
+        document.getElementById("outfitResult").innerText =
+          "Suggested Outfit: " + tops[i] + " + " + bottoms[j];
+        return;
+      }
+    }
+  }
+
+  const randomTop = tops[Math.floor(Math.random() * tops.length)];
+  const randomBottom = bottoms[Math.floor(Math.random() * bottoms.length)];
+
+  document.getElementById("outfitResult").innerText =
+    "Balanced Outfit: " + randomTop + " + " + randomBottom;
+}
+</script>
+
+</body>
+</html>
