@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    margin-top:50px;
+}
+
+#myDIV{
+    background:white;
+    padding:20px;
+    width:400px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:70%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+.addbtn{
+    padding:10px 15px;
+    background:#28a745;
+    color:white;
+    cursor:pointer;
+    border-radius:4px;
+    margin-left:5px;
+}
+
+.addbtn:hover{
+    background:#218838;
+}
+
+ul{
+    padding:0;
+    margin-top:20px;
+}
+
+li{
+    list-style:none;
+    background:#eee;
+    padding:10px;
+    padding-right:40px;
+    margin-top:5px;
+    position:relative;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+li:hover{
+    background:#ddd;
+}
+
+.checked{
+    text-decoration:line-through;
+    color:gray;
+}
+
+.close{
+    position:absolute;
+    right:10px;
+    top:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.close:hover{
+    color:red;
+}
+
+</style>
+</head>
+<body>
+    <div id ="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <input type="text" id="myinput" placeholder="title...">
+        <span onclick="newElement()" class="addbtn">add</span>
+    </div>
+    <ul id="myUL"style="list-style-type:rectangle">
+        <li>wake at 5 am </li>
+        <li>walk 10k steps</li>
+        <li>go to college</li>
+        <li>hit the gym</li>
+        <li>have protien</li>
+    </ul>
+    
+</body>
+<script>
+    document.querySelectorAll("li").forEach(function (li){
+        let span = document.createElement("span");
+        span.textContent="x";
+        span.className = "close";
+        li.appendChild(span);
+    });
+    document.querySelector("ul").addEventListener("click", function(e){
+        if(e.target.tagName==="LI"){
+            e.target.classList.toggle("checked");
+        }
+        if(e.target.classList.contains("close")){
+            e.target.parentElement.remove();
+        }
+    });
+    function newElement(){
+        let input = document.getElementById("myinput");
+        let value = input.value.trim();
+        if (value===""){
+            alert("you must write something!");
+            return;
+        }
+        let li = document.createElement("li");
+        li.textContent = value ;
+        let span = document.createElement("span");
+        span.textContent="x";
+        span.className= "close";
+        li.appendChild(span);
+        document.getElementById("myUL").appendChild(li);
+        input.value ="";
+        
+    }
+</script>
+</html>
